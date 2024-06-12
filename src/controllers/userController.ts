@@ -129,3 +129,25 @@ export const updateUser = async (req: Request, res: Response) => {
         errorResponse(res, 500, "There was an error to update user", err);
     }
 };
+
+
+export const userInfo = async (req: Request, res: Response) => {
+    try {
+        const userId = req.body.userId;
+
+        if (!userId) {
+            return errorResponse(res, 400, "User ID is required");
+        }
+
+        const userData = await userModel.findById(userId).select('-password');;
+
+        if (!userData) {
+            return errorResponse(res, 404, "User not found");
+        }
+
+        successResponse(res, 200, "User data retrieved successfully", userData);
+    } catch (err) {
+        errorResponse(res, 500, "There was an error to add registration", err);
+    }
+};
+
