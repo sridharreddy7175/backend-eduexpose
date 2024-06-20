@@ -1,15 +1,16 @@
+import { ICurriculum } from "./curriculumInterface";
+
 export interface ICourse {
-    title: String,
-    description: String,
-    author: String,
-    price: Number,
-    startDate: Date,
-    enrollby: Date,
-    seats: Number,
-    BookingSeats: Number,
-    courseName:String,
-    courseimage: String,
-    videos: String,
-    aboutProgram: String,
-    programCurriculum: object
+  image: string;
+  title: string;
+  description: string;
+  value: string;
+  about: string;
+  participationCertification: string;
+  trainingCompletioncertification: string;
+  internshipCompletioncertification: string;
+  curriculum: ICurriculum[];
+  startDate: Date;
+  instructorName: string;
+  enrollBy: Date;
 }

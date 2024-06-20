@@ -18,6 +18,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 courseRoutes.get('/allcourses', allCourses);
-courseRoutes.post('/createcourse', upload.single('courseimage'),validateBodyPayload.bind(null, createCourseSchema), createCourse);
+courseRoutes.post('/createcourse', createCourse);
 
 export default courseRoutes;

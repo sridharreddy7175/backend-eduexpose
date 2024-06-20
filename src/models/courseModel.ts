@@ -5,57 +5,31 @@ export interface ICourseModel extends ICourse, Document { }
 
 const CourseSchema: Schema = new Schema(
   {
-    title: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    author: {
-      type: String,
-      required: true
-    },
-    price: {
-      type: String,
-      required: true
-    },
-    courseimage: {
-      type: String,
-      required: true
-    },
-    videos: {
-      type: String,
-      required: true
-    },
+    image: { type: String, required: true },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    value: { type: String, required: true },
+    about: { type: String, required: true },
+    participationCertification: { type: String, required: true },
+    trainingCompletioncertification: { type: String, required: true },
+    internshipCompletioncertification: { type: String, required: true },
     startDate: {
       type: Date,
       required: true
     },
-    enrollby: {
+    instructorName: {
+      type: String,
+      required: true
+    },
+    curriculum: [{
+      category: { type: String, required: true },
+      topics: [{ type: String, required: true }]
+    }],
+    enrollBy: {
       type: Date,
       required: true
-    },
-    seats: {
-      type: Number,
-      required: true
-    },
-    BookingSeats: {
-      type: Number,
-      required: true
-    },
-    courseName: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category'
-    },
-    aboutProgram: {
-      type: String
-    },
-    programCurriculum: {
-      type: Array
-    }
 
+    }
   },
   { timestamps: true }
 );
