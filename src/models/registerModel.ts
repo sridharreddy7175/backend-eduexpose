@@ -29,7 +29,6 @@ const RegisterSchema: Schema = new Schema(
         },
         domainOfInterest: {
             type: String,
-            required: true,
         },
         contactNumber: {
             type: String,
@@ -37,7 +36,6 @@ const RegisterSchema: Schema = new Schema(
         },
         whatsAppNumber: {
             type: String,
-            required: true,
         },
         modeOfCommunications: {
             type: String,
@@ -47,17 +45,6 @@ const RegisterSchema: Schema = new Schema(
             type:String,
             required:true
         }
-        // crDetails: {
-        //     type: String,
-        //     required: true,
-        // },
-        // crNumber: {
-        //     type: String,
-        // },
-        // referralCode: {
-        //     type: String,
-        //     required: true,
-        // },
     },
     { timestamps: true }
 );

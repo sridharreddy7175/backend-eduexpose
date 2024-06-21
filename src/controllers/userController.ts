@@ -86,10 +86,10 @@ export const createRegister = async (req: Request, res: Response) => {
             collegeName: userData.collegeName,
             degreeYear: userData.degreeYear,
             department: userData.department,
-            domainOfInterest: userData.domainOfInterest,
+            domainOfInterest: userData.domainOfInterest || '',
             modeOfCommunications:userData.modeOfCommunications,
             contactNumber: userData.contactNumber,
-            whatsAppNumber: userData.whatsAppNumber,
+            whatsAppNumber: userData.whatsAppNumber || '',
             type:userData?.type
         });
 
