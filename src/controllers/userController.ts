@@ -109,6 +109,15 @@ export const allUsers = async (req: Request, res: Response) => {
     }
 };
 
+export const allRegisterList = async (req: Request, res: Response) => {
+    try {
+        let Registers = await registerModel.find();
+        successResponse(res, 200, "Data Found", Registers);
+    } catch (err) {
+        errorResponse(res, 500, "Server error", err);
+    }
+};
+
 export const updateUser = async (req: Request, res: Response) => {
     try {
         let user: any = req.body;
