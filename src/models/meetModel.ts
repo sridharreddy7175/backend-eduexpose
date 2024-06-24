@@ -5,11 +5,7 @@ export interface IMeetModel extends IMeet, Document { }
 
 const MeetSchema: Schema = new Schema(
     {
-        username: {
-            type: String,
-            required: true,
-        },
-        password: {
+        title: {
             type: String,
             required: true,
         },
@@ -18,7 +14,7 @@ const MeetSchema: Schema = new Schema(
             required: true
         },
         meetDate:{
-            type:Date,
+            type:String,
             required:true
         }
 

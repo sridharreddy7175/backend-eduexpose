@@ -14,9 +14,10 @@ export const loginSchema = Joi.object({
 });
 
 export const meetSchema = Joi.object({
-    username: Joi.string().alphanum().min(3).max(30).required(),
-    password: Joi.string().required(),
-    link: Joi.string().required()
+    title: Joi.string().required(),
+    link: Joi.string().required(),
+    meetDate:Joi.string().required()
+    
 })
 
 export const updateUserRoleSchema = Joi.object({

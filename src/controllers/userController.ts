@@ -21,13 +21,14 @@ export const createUser = async (req: Request, res: Response) => {
 
         let salt = await bcrypt.genSalt(10);
         let encryptPassword = await bcrypt.hash(userData.password, salt);
-
         let newUser = new userModel({
             name: userData.name,
             email: userData.email,
-            phone:userData.phone,
+            phone: userData.phone,
             password: encryptPassword,
             role: roleData._id,
+            dateOfJoining: userData.dateOfJoining,
+            profileUrl: userData.profileUrl
         });
         let savedUser = await newUser.save();
         successResponse(res, 200, "User added successfully", savedUser);
@@ -39,19 +40,19 @@ export const createUser = async (req: Request, res: Response) => {
 export const userLogin = async (req: Request, res: Response) => {
     try {
         let { email, password } = req.body;
-        
+
         // Check if email exists
-        let user:any = await userModel.findOne({ email: email }).populate('role');;
+        let user: any = await userModel.findOne({ email: email }).populate('role');;
         if (!user) {
             return errorResponse(res, 400, "Invalid Email id");
         }
-        
+
         // Check if the password is correct
         let isMatch: boolean = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return errorResponse(res, 400, "Invalid Password");
         }
-        
+
         // Create a payload
         let secretKey: string | undefined = process.env.JWT_SECRET_KEY;
         if (secretKey) {
@@ -64,11 +65,11 @@ export const userLogin = async (req: Request, res: Response) => {
                 name: user.name,
                 email: user.email,
                 role: user.role,
-                token:token
+                token: token
             };
-            
+
             // Return token and user info
-            return successResponse(res, 200, "Login is Success",  payload );
+            return successResponse(res, 200, "Login is Success", payload);
         } else {
             return errorResponse(res, 400, "Server Error, unable to create a token");
         }
@@ -87,10 +88,10 @@ export const createRegister = async (req: Request, res: Response) => {
             degreeYear: userData.degreeYear,
             department: userData.department,
             domainOfInterest: userData.domainOfInterest || '',
-            modeOfCommunications:userData.modeOfCommunications,
+            modeOfCommunications: userData.modeOfCommunications,
             contactNumber: userData.contactNumber,
             whatsAppNumber: userData.whatsAppNumber || '',
-            type:userData?.type
+            type: userData?.type
         });
 
         let savedRegister = await newRegister.save();

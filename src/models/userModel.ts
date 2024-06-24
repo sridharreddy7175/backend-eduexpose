@@ -25,6 +25,9 @@ const UserSchema: Schema = new Schema(
       required: true,
       min: 8,
     },
+    dateOfJoining:{
+    type:Date
+    },
     role: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Role'

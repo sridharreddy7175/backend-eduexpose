@@ -16,9 +16,8 @@ export const createMeet = async (req: Request, res: Response) => {
     try {
         let data = req.body;
         let newMeet = new meetModel({
-            username: data.username,
+            title: data.title,
             link: data.link,
-            password: data.password,
             meetDate:data.meetDate
         })
         newMeet = await newMeet.save();

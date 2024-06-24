@@ -1,7 +1,6 @@
 export interface IMeet {
-    username: String;
+    title: String;
     link: String;
-    fromDate: Date; // Corrected type to Date
+    meetDate: Date; // Corrected type to Date
     password: String;
-    toDate: Date;
 }
